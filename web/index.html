@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+/* CSS for carousel */
+#image-carousel {
+  position: relative;
+  width: 100%;
+  height: 400px; /* Adjust carousel height as needed */
+  overflow: hidden;
+  border-radius: 10px; /* Rounded corners */
+}
+
+.carousel-container {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-image {
+  flex: 0 0 100%; /* Ensure images take full width */
+  height: 100%;
+  object-fit: cover; /* Ensure images fill the container */
+  cursor: pointer;
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* CSS for buttons */
+.carousel-buttons {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px; /* Rounded corners */
+}
+
+.carousel-button {
+  width: 40px; /* Adjust button size */
+  height: 40px; /* Adjust button size */
+  border-radius: 50%; /* Circular button */
+  margin-bottom: 10px; /* Adjust spacing between buttons */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-button:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Timer indicator */
+.timer-indicator {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+}
+
+.timer-indicator::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 50%;
+  transform-origin: center;
+  animation: timer-fill 5s linear forwards;
+}
+
+@keyframes timer-fill {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+</style>
+</head>
+<body>
+
+<div id="image-carousel">
+  <div class="carousel-container">
+    <!-- Image items will be dynamically inserted here -->
+  </div>
+  <div class="carousel-buttons">
+    <!-- Circular buttons will be dynamically inserted here -->
+  </div>
+</div>
+
+<script>
+// JavaScript for carousel functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const carouselContainer = document.querySelector('.carousel-container');
+  const carouselButtons = document.querySelector('.carousel-buttons');
+  const images = [
+    { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3NfTVQsLnF6mUkvrIal3BY8_SkNMIlxDLnA&s', link: 'https://example.com/link1' },
+    { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW5v9k8iZQEVFSmhK3Oxkb9WkZ--WvGIJx3Q&s', link: 'https://example.com/link2' },
+    { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxg4IOOanUkZGuUJl4da-wM0pn87FhiGQkqA&s', link: 'https://example.com/link3' },
+    { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn96dJ9lC00ATYAJGb-d7dP0L_zi7_-ye_kw&s', link: 'https://example.com/link4' }
+  ];
+
+  let currentIndex = 0;
+  let intervalId;
+
+  // Function to change slide and update timer
+  function changeSlide(index) {
+    currentIndex = index;
+    const offset = -currentIndex * carouselContainer.clientWidth;
+    carouselContainer.style.transform = `translateX(${offset}px)`;
+
+    // Reset and start timer animation
+    const timerIndicator = document.querySelector('.timer-indicator');
+    timerIndicator.style.animation = 'none';
+    setTimeout(() => {
+      timerIndicator.style.animation = 'timer-fill 5s linear forwards';
+    }, 100);
+  }
+
+  // Populate carousel with images and buttons
+  images.forEach((image, index) => {
+    const img = document.createElement('img');
+    img.classList.add('carousel-image');
+    img.src = image.src;
+    img.alt = `Image ${index + 1}`;
+    img.addEventListener('click', () => {
+      window.open(image.link, '_blank');
+    });
+    carouselContainer.appendChild(img);
+
+    // Create circular button for each image
+    const button = document.createElement('button');
+    button.classList.add('carousel-button');
+    button.style.backgroundImage = `url(${image.src})`;
+    button.addEventListener('click', () => {
+      changeSlide(index);
+    });
+    carouselButtons.appendChild(button);
+  });
+
+  // Start auto-scroll interval
+  intervalId = setInterval(() => {
+    currentIndex = (currentIndex + 1) % images.length;
+    changeSlide(currentIndex);
+  }, 5000);
+
+  // Stop interval on hover
+  carouselContainer.addEventListener('mouseenter', () => {
+    clearInterval(intervalId);
+  });
+
+  // Resume interval on mouse leave
+  carouselContainer.addEventListener('mouseleave', () => {
+    intervalId = setInterval(() => {
+      currentIndex = (currentIndex + 1) % images.length;
+      changeSlide(currentIndex);
+    }, 5000);
+  });
+
+  // Ensure the carousel loops back to the beginning
+  carouselContainer.addEventListener('transitionend', () => {
+    if (currentIndex === images.length) {
+      currentIndex = 0;
+      carouselContainer.style.transition = 'none';
+      carouselContainer.style.transform = `translateX(0)`;
+      setTimeout(() => {
+        carouselContainer.style.transition = 'transform 0.5s ease-in-out';
+      }, 100);
+    }
+  });
+
+});
+</script>
+
+</body>
+</html>
