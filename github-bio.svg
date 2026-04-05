@@ -219,6 +219,31 @@
           text-align: center;
           letter-spacing: 1px;
         }
+
+        /* ── Light Mode ── */
+        @media (prefers-color-scheme: light) {
+          .card { background: #f9f9f7; color: #1a1a1a; border-color: #e0e0e0; }
+          .header { border-bottom-color: #ddd; }
+          .status-line { color: #00994d; }
+          .status-dot { background: #00994d; box-shadow: 0 0 8px #00994d55; }
+          .name { color: #1a1a1a; }
+          .name .accent { color: #00994d; }
+          .tagline { color: #666; }
+          .typewriter { color: #666; }
+          .typewriter .prompt { color: #00994d; }
+          .typewriter .typed { border-right-color: #00994d; }
+          .section-header { color: #aaa; }
+          .section-header::after { background: #ddd; }
+          .info-card { background: #ffffff; border-color: #e0e0e0; }
+          .info-card .label { color: #aaa; }
+          .info-card .value { color: #1a1a1a; }
+          .highlight { color: #00994d; }
+          .tech-category-label { color: #00994d; }
+          .tag { background: #f0faf5; border-color: #b3dfc6; color: #1a1a1a; }
+          .contact-bar { border-top-color: #ddd; }
+          .contact-link { color: #666; border-color: #ddd; }
+          .footer { color: #aaa; }
+        }
       </style>
 
       <div class="card">
