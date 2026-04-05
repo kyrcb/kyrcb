@@ -1,0 +1,333 @@
+<svg fill="none" viewBox="0 0 800 920" width="800" height="920" xmlns="http://www.w3.org/2000/svg">
+  <foreignObject width="100%" height="100%">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&amp;family=Space+Mono:wght@400;700&amp;family=IBM+Plex+Mono:wght@300;400;500;600&amp;display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        .card {
+          background: #0a0a0a;
+          color: #e0e0e0;
+          font-family: 'IBM Plex Mono', 'Courier New', monospace;
+          padding: 40px 36px;
+          border-radius: 12px;
+          border: 1px solid #1a1a1a;
+          min-height: 910px;
+        }
+
+        /* ── Header ── */
+        .header {
+          margin-bottom: 36px;
+          padding-bottom: 24px;
+          border-bottom: 1px solid #222;
+        }
+
+        .status-line {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 10px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: #00ff88;
+          margin-bottom: 14px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .status-dot {
+          width: 6px;
+          height: 6px;
+          background: #00ff88;
+          border-radius: 50%;
+          display: inline-block;
+          box-shadow: 0 0 8px #00ff88;
+          animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.3; }
+        }
+
+        .name {
+          font-family: 'Space Mono', monospace;
+          font-size: 36px;
+          font-weight: 700;
+          letter-spacing: -1px;
+          line-height: 1.1;
+          margin-bottom: 10px;
+          color: #e0e0e0;
+        }
+
+        .name .accent { color: #00ff88; }
+
+        .tagline {
+          font-size: 12.5px;
+          color: #6a6a6a;
+          font-weight: 300;
+          line-height: 1.6;
+          max-width: 480px;
+        }
+
+        .typewriter {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 12px;
+          color: #6a6a6a;
+          margin-top: 16px;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+
+        .typewriter .prompt { color: #00ff88; }
+
+        .typewriter .typed {
+          overflow: hidden;
+          white-space: nowrap;
+          border-right: 2px solid #00ff88;
+          animation: typing 3s steps(38) 0.5s forwards, blink 0.7s step-end infinite;
+          width: 0;
+        }
+
+        @keyframes typing { to { width: 38ch; } }
+        @keyframes blink { 50% { border-color: transparent; } }
+
+        /* ── Sections ── */
+        .section { margin-bottom: 28px; }
+
+        .section-header {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 9px;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+          color: #444;
+          margin-bottom: 16px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .section-header::after {
+          content: '';
+          flex: 1;
+          height: 1px;
+          background: #222;
+        }
+
+        /* ── Info Grid ── */
+        .info-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 10px;
+        }
+
+        .info-card {
+          background: #111;
+          border: 1px solid #222;
+          border-radius: 6px;
+          padding: 14px 16px;
+        }
+
+        .info-card .label {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 9px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: #444;
+          margin-bottom: 4px;
+        }
+
+        .info-card .value {
+          font-size: 12px;
+          color: #e0e0e0;
+          line-height: 1.4;
+        }
+
+        .highlight { color: #00ff88; }
+
+        /* ── Tech Tags ── */
+        .tech-category { margin-bottom: 14px; }
+
+        .tech-category-label {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 10px;
+          color: #00cc6a;
+          margin-bottom: 8px;
+          letter-spacing: 1px;
+        }
+
+        .tech-tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 6px;
+        }
+
+        .tag {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 11px;
+          padding: 5px 12px;
+          background: #0d1f15;
+          border: 1px solid #1a3d2a;
+          border-radius: 4px;
+          color: #e0e0e0;
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+        }
+
+        .tag svg {
+          width: 12px;
+          height: 12px;
+          flex-shrink: 0;
+        }
+
+        /* ── Contact ── */
+        .contact-bar {
+          margin-top: 32px;
+          padding-top: 24px;
+          border-top: 1px solid #222;
+          display: flex;
+          gap: 12px;
+          align-items: center;
+        }
+
+        .contact-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 11px;
+          color: #6a6a6a;
+          text-decoration: none;
+          padding: 6px 14px;
+          border: 1px solid #222;
+          border-radius: 4px;
+        }
+
+        .contact-link svg {
+          width: 13px;
+          height: 13px;
+        }
+
+        /* ── Footer ── */
+        .footer {
+          margin-top: 32px;
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 10px;
+          color: #444;
+          text-align: center;
+          letter-spacing: 1px;
+        }
+      </style>
+
+      <div class="card">
+        <!-- Header -->
+        <div class="header">
+          <div class="status-line">
+            <span class="status-dot"></span>
+            available for collaboration
+          </div>
+          <div class="name">David Laureles<span class="accent">.</span></div>
+          <p class="tagline">Software Developer at Inventiv — crafting polished interfaces and thoughtful user experiences through clean, modern front-end code.</p>
+          <div class="typewriter">
+            <span class="prompt">→</span>
+            <span class="typed">building interfaces that feel right</span>
+          </div>
+        </div>
+
+        <!-- About -->
+        <div class="section">
+          <div class="section-header">About</div>
+          <div class="info-grid">
+            <div class="info-card">
+              <div class="label">Role</div>
+              <div class="value">Software Developer @ <span class="highlight">Inventiv</span></div>
+            </div>
+            <div class="info-card">
+              <div class="label">Focus</div>
+              <div class="value">Front End &amp; <span class="highlight">UI/UX</span> Design</div>
+            </div>
+            <div class="info-card">
+              <div class="label">Exploring</div>
+              <div class="value">Local AI with <span class="highlight">Ollama</span></div>
+            </div>
+            <div class="info-card">
+              <div class="label">Philosophy</div>
+              <div class="value">Design is in the <span class="highlight">details</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="section">
+          <div class="section-header">Tech Stack</div>
+
+          <div class="tech-category">
+            <div class="tech-category-label">// front end</div>
+            <div class="tech-tags">
+              <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="#e0e0e0" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h10"/></svg>HTML</span>
+              <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="#e0e0e0" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>CSS</span>
+              <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="#e0e0e0" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 17V7l4 10 4-10v10"/></svg>Bootstrap</span>
+              <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="#e0e0e0" stroke-width="2"><path d="M12 2L2 19.5h20L12 2z"/></svg>Tailwind CSS</span>
+              <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="#e0e0e0" stroke-width="2"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2z"/><path d="M8 12h4M12 8v8"/></svg>JavaScript</span>
+              <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="#e0e0e0" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8M8 12h8"/></svg>TypeScript</span>
+              <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="#e0e0e0" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2a10 10 0 010 20"/><path d="M2 12h4M18 12h4"/></svg>React</span>
+              <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="#e0e0e0" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>Next.js</span>
+            </div>
+          </div>
+
+          <div class="tech-category">
+            <div class="tech-category-label">// mobile</div>
+            <div class="tech-tags">
+              <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="#e0e0e0" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="18" r="1"/></svg>Flutter</span>
+              <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="#e0e0e0" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Dart</span>
+            </div>
+          </div>
+
+          <div class="tech-category">
+            <div class="tech-category-label">// back end &amp; data</div>
+            <div class="tech-tags">
+              <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="#e0e0e0" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>Node.js</span>
+              <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="#e0e0e0" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>PHP</span>
+              <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="#e0e0e0" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>Python</span>
+              <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="#e0e0e0" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>PostgreSQL</span>
+              <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="#e0e0e0" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Supabase</span>
+              <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="#e0e0e0" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M9 9h6v6H9z"/></svg>Firestore</span>
+            </div>
+          </div>
+
+          <div class="tech-category">
+            <div class="tech-category-label">// platforms &amp; tools</div>
+            <div class="tech-tags">
+              <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="#e0e0e0" stroke-width="2"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>WordPress</span>
+              <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="#e0e0e0" stroke-width="2"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/></svg>Vercel</span>
+              <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="#e0e0e0" stroke-width="2"><path d="M12 2L2 19h20L12 2z"/><path d="M12 8v6M12 16v1"/></svg>Netlify</span>
+              <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="#e0e0e0" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Ollama</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="contact-bar">
+          <span class="contact-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#6a6a6a" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+            GitHub
+          </span>
+          <span class="contact-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#6a6a6a" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </span>
+          <span class="contact-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#6a6a6a" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Email
+          </span>
+        </div>
+
+        <div class="footer">
+          built with intention · designed with care
+        </div>
+      </div>
+    </div>
+  </foreignObject>
+</svg>
